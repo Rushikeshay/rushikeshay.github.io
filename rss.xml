@@ -1,0 +1,183 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss version="2.0"  xml:lang="en-us"  xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        
+
+        
+
+        
+            <language>en-us</language>
+        
+
+        
+            <lastBuildDate>Mon, 01 Jan 0001 00:00:00 UTC</lastBuildDate>
+        
+
+        
+            <link>http://localhost:64909/</link>
+        
+
+        
+            <atom:link href="http://localhost:64909/rss.xml" hreflang="en-us" rel="self" type="application/rss+xml"/>
+        
+
+        
+            
+
+            <atom:link href="http://localhost:64909/" hreflang="en-us" rel="alternate" type="text/html"/>
+        
+            
+
+            <atom:link href="http://localhost:64909/rss.xml" hreflang="en-us" rel="alternate" type="application/rss+xml"/>
+        
+
+        
+
+        
+
+        
+            <title>Rushikesh Jadhav</title>
+        
+
+        
+
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 id=about-me>About me</h1><p>I am a Master of Public Policy student at the University of Chicago, passionate about leveraging data visualization to inform policy decisions. My academic background and practical experience have equipped me with skills in data analysis, visualization, and storytelling.</p><h1 id=about-this-portfolio>About this Portfolio</h1><p>These are my projects for CAPP 30239: Data Visualization for Policy Analysis class. They include a static report using Python Altair and an interactive visualization using D3.js, CSS, and HTML.</p><h1 id=connect-with-me>Connect with me</h1><p><strong>LinkedIn:</strong> <a href=https://www.linkedin.com/in/rushikesh-jadhav-mpp rel=external>Click here</a></p><p><strong>GitHub:</strong> <a href=https://github.com/rushikeshay rel=external>Click here</a></p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:localhost:64909,0001-01-01:/about/</guid>
+                    
+
+                    
+                        <link>http://localhost:64909/about/</link>
+                    
+
+                    
+                        
+
+                        
+
+                        <atom:link href="http://localhost:64909/about/" hreflang="en-us" rel="alternate" type="text/html"/>
+                    
+
+                    
+
+                    
+                        <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>About</title>
+                    
+                </item>
+            
+        
+            
+                <item>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                    
+                    
+
+                    
+
+                    
+                        <description><![CDATA[<h1 id=my-projects>My Projects</h1><h2 id=interactive-protest-visualization>Interactive Protest Visualization</h2><p>This Global Protest Tracker visualizes worldwide protest events from 2017 to 2025. It allows users to explore protest trends over time, by country, and by motive.</p><p><strong><a href=http://localhost:64909/protests/index.html>View Interactive Tool ➜</a></strong></p><hr><h2 id=static-data-visualization-report>Static Data Visualization Report</h2><p>A comprehensive report analyzing The Pradhan Mantri Fasal Bima Yojana (PMFBY), a crop insurance scheme in India. It specifically focuses on the North Eastern states of India.</p><p><strong><a href=http://localhost:64909/PMFBY_report.pdf>View PDF Report ➜</a></strong></p>]]></description>
+                    
+
+                    
+                        <guid isPermaLink="false">tag:localhost:64909,0001-01-01:/projects/</guid>
+                    
+
+                    
+                        <link>http://localhost:64909/projects/</link>
+                    
+
+                    
+                        
+
+                        
+
+                        <atom:link href="http://localhost:64909/projects/" hreflang="en-us" rel="alternate" type="text/html"/>
+                    
+
+                    
+
+                    
+                        <pubDate>Mon, 01 Jan 0001 00:00:00 UTC</pubDate>
+                    
+
+                    
+                        <title>Projects</title>
+                    
+                </item>
+            
+        
+    </channel>
+</rss>

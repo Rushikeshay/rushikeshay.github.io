@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Protests Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tooltip" id="tooltip"></div>
+    <header>
+        <h1>Global Protests Tracker</h1>
+        <p class="description">
+            Interactive visualization of global protests (2017-2024) from Carnegie Endowment for International Peace
+        </p>
+    </header>
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <h2>Filters</h2>
+        <div class="filter-container">
+            <div class="filter-group">
+                <h3>Filter by Year:</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-all" checked>
+                        <label for="year-all">All Years</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2017" disabled>
+                        <label for="year-2017">2017</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2018" disabled>
+                        <label for="year-2018">2018</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2019" disabled>
+                        <label for="year-2019">2019</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2020" disabled>
+                        <label for="year-2020">2020</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2021" disabled>
+                        <label for="year-2021">2021</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2022" disabled>
+                        <label for="year-2022">2022</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2023" disabled>
+                        <label for="year-2023">2023</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2024" disabled>
+                        <label for="year-2024">2024</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2025" disabled>
+                        <label for="year-2025">2025</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motivation -->
+            <div class="filter-group">
+                <h3>Filter by Motivation:</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="motivation-all" checked>
+                        <label for="motivation-all">All Motives</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="motivation-economic" disabled>
+                        <label for="motivation-economic">Economic</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="motivation-political" disabled>
+                        <label for="motivation-political">Political</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="motivation-corruption" disabled>
+                        <label for="motivation-corruption">Corruption</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="motivation-gender" disabled>
+                        <label for="motivation-gender">Gender</label>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-group" style="flex: 1; max-width: 600px;">
+                <h3>About the Dataset</h3>
+                <p style="color: #555; line-height: 1.6; font-size: 14px; margin-top: 10px;">
+                    The Global Protest Tracker is a worldwide database of major antigovernment protests since 2017. 
+                    It logs where and when protests occur, why they happen, how big they get, and how long they last. 
+                    The dataset also captures triggers, outcomes, and whether governments respond with violence. Its 
+                    definition of “significant” protests considers not just size but political context. Overall, it’s 
+                    a concise, up-to-date resource for understanding global patterns in unrest.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Map -->
+    <section class="map-section">
+        <h2>World Map</h2>
+        <div id="map-container"></div>
+        
+        <!-- Map's legend -->
+        <div class="legend">
+            <h3>Number of Protests</h3>
+            <div class="legend-scale" id="legend-scale"></div>
+            <div class="legend-labels" id="legend-labels"></div>
+        </div>
+    </section>
+
+    <!-- Country profile set up -->
+    <div class="country-panel" id="country-panel">
+        <h2 id="country-name">Select a Country</h2>
+            <div class="summary-section">
+                <p><strong>Total Protests:</strong> <span id="protest-count">0</span></p>
+            </div>
+        <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
+        <h3>Protests:</h3>
+        <div id="protests-list"></div>
+        <!-- Variable descriptions -->
+        <div class="variable-info-section">
+            <h3>Variable Descriptions</h3>
+            <div class="variable-item">
+                <strong>Month:</strong>
+                <span>The Month when the protest began</span>
+            </div>
+            <div class="variable-item">
+                <strong>Year:</strong>
+                <span>The Year in which the protest took place</span>
+            </div>
+            <div class="variable-item">
+                <strong>Freedom Rating:</strong>
+                <span>Country's freedom status (Free, Partly Free, or Not Free) based on Freedom House ratings</span>
+            </div>
+            <div class="variable-item">
+                <strong>Triggers:</strong>
+                <span>The immediate events or incidents that sparked the protest</span>
+            </div>
+            <div class="variable-item">
+                <strong>Motivations:</strong>
+                <span>The underlying reasons and grievances driving the protest movement</span>
+            </div>
+            <div class="variable-item">
+                <strong>Key Participants:</strong>
+                <span>Main groups, organizations, or demographics involved in the protest</span>
+            </div>
+            <div class="variable-item">
+                <strong>Duration:</strong>
+                <span>How long the protest lasted</span>
+            </div>
+            <div class="variable-item">
+                <strong>Outcomes:</strong>
+                <span>The results or consequences of the protest (policy changes, government response, etc.)</span>
+            </div>
+            <div class="variable-item">
+                <strong>Size Category:</strong>
+                <span>The scale of the protest based on number of participants</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Global variables, I adapted some lines of code from https://d3-graph-gallery.com/graph/choropleth_basic.html.
+        // I also used LLM to give me formatting suggestions after I had built the basic map. 
+        let protestData = [];
+        let protestCountByCountry = new Map();
+        let colorScale;
+        
+        // Map dimensions
+        const width = 960;
+        const height = 500;
+
+        // SVG element
+        const svg = d3.select('#map-container')
+            .append('svg')
+            .attr('width', '100%')
+            .attr('height', height)
+            .attr('viewBox', `0 0 ${width} ${height}`);
+
+        // Projection
+        const projection = d3.geoNaturalEarth1()
+            .scale(width / 6)
+            .translate([width / 2, height / 2]);
+
+        const path = d3.geoPath().projection(projection);
+
+        // Group for all countries
+        const g = svg.append('g');
+
+        // Zoom map
+        const zoom = d3.zoom()
+            .scaleExtent([1, 8]) 
+            .on('zoom', (event) => {
+                g.attr('transform', event.transform);
+            });
+
+        svg.call(zoom);
+
+        // Setup year filter handlers
+        setupYearFilters();
+        setupMotivationFilters();
+
+        // Loading csv using .then method
+        d3.csv('protest.csv').then(data => {
+            protestData = data;
+            console.log('Loaded protests:', protestData.length); // consol log functions were suggestions from LLMs 
+            console.log('Sample protest:', protestData[0]);
+            
+            // Count protests per country
+            protestData.forEach(protest => {
+                const country = protest.Country;
+                if (country) {
+                    protestCountByCountry.set(country, (protestCountByCountry.get(country) || 0) + 1);
+                }
+            });
+            
+            console.log('Protest counts by country:', Array.from(protestCountByCountry.entries()));
+            
+            // Get the range of protest counts for legend 
+            const counts = Array.from(protestCountByCountry.values());
+            const maxProtests = Math.max(...counts);
+            const minProtests = Math.min(...counts);
+            
+            // Creating legend scale 
+            colorScale = d3.scaleSequential()
+                .domain([0, maxProtests])
+                .interpolator(d3.interpolateGnBu);
+            
+            createLegend(maxProtests);
+            loadMap();
+        })
+
+        // Year filter setup
+        function setupYearFilters() {
+            const allYearsCheckbox = document.getElementById('year-all');
+            const yearCheckboxes = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
+                .map(year => document.getElementById(`year-${year}`));
+            
+            // Handle "All Years" checkbox
+            allYearsCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Disable and uncheck all individual years
+                    yearCheckboxes.forEach(checkbox => {
+                        checkbox.checked = false;
+                        checkbox.disabled = true;
+                    });
+                } else {
+                    // Enable all individual years
+                    yearCheckboxes.forEach(checkbox => {
+                        checkbox.disabled = false;
+                    });
+                }
+                updateMapColors();
+            });
+            
+            // Handle individual year checkboxes
+            yearCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // If any year is checked, uncheck "All Years"
+                    if (this.checked) {
+                        allYearsCheckbox.checked = false;
+                    }
+                    
+                    // If no years are checked, check "All Years" and disable others
+                    const anyYearChecked = yearCheckboxes.some(cb => cb.checked);
+                    if (!anyYearChecked) {
+                        allYearsCheckbox.checked = true;
+                        yearCheckboxes.forEach(cb => cb.disabled = true);
+                    }
+                    updateMapColors(); 
+                });
+            });
+        }
+
+        // Motivation filter setup
+        function setupMotivationFilters() {
+            const allMotivationsCheckbox = document.getElementById('motivation-all');
+            const motivationCheckboxes = ['economic', 'political', 'corruption', 'gender']
+                .map(motivation => document.getElementById(`motivation-${motivation}`));
+            
+            // Handle "All" checkbox
+            allMotivationsCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Disable and uncheck all individual motivations
+                    motivationCheckboxes.forEach(checkbox => {
+                        checkbox.checked = false;
+                        checkbox.disabled = true;
+                    });
+                } else {
+                    // Enable all individual motivations
+                    motivationCheckboxes.forEach(checkbox => {
+                        checkbox.disabled = false;
+                    });
+                }
+                updateMapColors();
+            });
+            
+            // Handle individual motivation checkboxes
+            motivationCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // If any motivation is checked, uncheck "All"
+                    if (this.checked) {
+                        allMotivationsCheckbox.checked = false;
+                    }
+                    
+                    // If no motivations are checked, check "All" and disable others
+                    const anyMotivationChecked = motivationCheckboxes.some(cb => cb.checked);
+                    if (!anyMotivationChecked) {
+                        allMotivationsCheckbox.checked = true;
+                        motivationCheckboxes.forEach(cb => cb.disabled = true);
+                    }
+                    updateMapColors();
+                });
+            });
+        }
+
+        // Get selected years
+        function getSelectedYears() {
+            const allYearsChecked = document.getElementById('year-all').checked;
+            if (allYearsChecked) {
+                return null; 
+            }
+            const selectedYears = [];
+            [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025].forEach(year => {
+                if (document.getElementById(`year-${year}`).checked) {
+                    selectedYears.push(year.toString());
+                }
+            });
+            
+            return selectedYears;
+        }
+
+        // Get selected motivations
+        function getSelectedMotivations() {
+                const allMotivationsChecked = document.getElementById('motivation-all').checked;
+            if (allMotivationsChecked) {
+                return null; 
+            }
+            
+            const motivations = [];
+
+            if (document.getElementById('motivation-economic').checked) {
+                motivations.push('Economic motivation?');
+            }
+            if (document.getElementById('motivation-political').checked) {
+                motivations.push('Political motivation?');
+            }
+            if (document.getElementById('motivation-corruption').checked) {
+                motivations.push('Corruption motivation?');
+            }
+            if (document.getElementById('motivation-gender').checked) {
+                motivations.push('Gender motivation?');
+            }
+            
+            return motivations;
+        }
+
+        // Filter protests based on selections
+        function filterProtests(protests) {
+            const selectedYears = getSelectedYears();
+            const selectedMotivations = getSelectedMotivations();
+            
+            let filtered = protests;
+            
+            // Filter by year
+            if (selectedYears !== null && selectedYears.length > 0) {
+                filtered = filtered.filter(protest => {
+                    const protestYear = protest['Year_4digit']?.toString().replace('.0', '');
+                    return selectedYears.includes(protestYear);
+                });
+            }
+            
+            // Filter by motivation
+            if (selectedMotivations !== null && selectedMotivations.length > 0) {
+                filtered = filtered.filter(protest => {
+                    return selectedMotivations.some(motivation => 
+                        protest[motivation] === 'X'
+                    );
+                });
+            }
+            
+            return filtered;
+        }
+
+        // Update map colors based on current filters
+        function updateMapColors() {
+            const filteredCountByCountry = new Map();
+            
+            protestData.forEach(protest => {
+                const country = protest.Country;
+                if (country) {
+                    const filtered = filterProtests([protest]);
+                    if (filtered.length > 0) {
+                        filteredCountByCountry.set(country, (filteredCountByCountry.get(country) || 0) + 1);
+                    }
+                }
+            });
+            
+            // New color scale for map 
+            const counts = Array.from(filteredCountByCountry.values());
+            const maxProtests = counts.length > 0 ? Math.max(...counts) : 1;
+            
+            // Update color scale 
+            colorScale = d3.scaleSequential()
+                .domain([0, maxProtests])
+                .interpolator(d3.interpolateGnBu);
+            
+            // New legend
+            d3.select('#legend-scale').html('');
+            d3.select('#legend-labels').html('');
+            createLegend(maxProtests);
+            
+            // Update all country colors
+            g.selectAll('.country')
+                .transition()
+                .duration(500)
+                .attr('fill', function() {
+                    const countryName = d3.select(this).data()[0].properties.name;
+                    const count = filteredCountByCountry.get(countryName);
+                    return count ? colorScale(count) : '#f0f0f0';
+                })
+                .attr('class', function() {
+                    const countryName = d3.select(this).data()[0].properties.name;
+                    const count = filteredCountByCountry.get(countryName);
+                    return count ? 'country' : 'country no-data';
+                });
+        }
+
+        // Legend I used https://observablehq.com/@d3/color-legend and LLMs to learn more about 
+        // creating color scheme for legend. 
+        function createLegend(maxValue) {
+            const legendScale = d3.select('#legend-scale');
+            const legendLabels = d3.select('#legend-labels');
+            // Gradient 
+            const steps = 100;
+            for (let i = 0; i < steps; i++) {
+                const value = (i / steps) * maxValue;
+                legendScale.append('div')
+                    .style('flex', '1')
+                    .style('background-color', colorScale(value));
+            }
+            
+            // Create labels
+            const labelValues = [0, Math.floor(maxValue * 0.25), Math.floor(maxValue * 0.5), 
+                                 Math.floor(maxValue * 0.75), maxValue];
+            
+            labelValues.forEach(val => {
+                legendLabels.append('span').text(val);
+            });
+        }
+
+        function loadMap() {
+            d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+                .then(data => {
+                    const countries = topojson.feature(data, data.objects.countries);
+
+                    g.selectAll('path')
+                        .data(countries.features)
+                        .enter()
+                        .filter(d => d.properties.name !== 'Antarctica') 
+                        .append('path')
+                        .attr('class', d => {
+                            const count = protestCountByCountry.get(d.properties.name);
+                            return count ? 'country' : 'country no-data';
+                        })
+                        .attr('d', path)
+                        .attr('fill', d => {
+                            const count = protestCountByCountry.get(d.properties.name);
+                            return count ? colorScale(count) : '#f0f0f0';
+                        })
+                        .on('click', function(event, d) {
+                            // Remove previous selection
+                            g.selectAll('.country').classed('selected', false);
+                            
+                            // Highlight clicked country
+                            d3.select(this).classed('selected', true);
+                            
+                            // Show country panel 
+                            showCountryPanel(d.properties.name);
+                        })
+                        .on('mouseover', function(event, d) {
+                            const tooltip = d3.select('#tooltip');
+                            const countryName = d.properties.name;
+                            
+                            // Get all protests for this country
+                            const countryProtests = protestData.filter(p => p.Country === countryName);
+                            
+                            // Apply filters to get filtered count
+                            const filteredProtests = filterProtests(countryProtests);
+                            const filteredCount = filteredProtests.length;
+                            const totalCount = countryProtests.length;
+                            
+                            // Show both filtered and total counts
+                            tooltip
+                                .html(`<strong>${countryName}</strong><br/>Protests: ${filteredCount} / ${totalCount}`)
+                                .classed('visible', true)
+                                .style('left', (event.pageX + 10) + 'px')
+                                .style('top', (event.pageY - 10) + 'px');
+                        })
+                        .on('mouseout', function() {
+                            d3.select('#tooltip').classed('visible', false);
+                        })
+                })
+        }
+        function showCountryPanel(countryName) {
+            console.log('Showing panel for:', countryName);
+            
+            // filter by country and filters 
+            const countryProtests = protestData.filter(p => p.Country === countryName);
+            const filteredProtests = filterProtests(countryProtests);
+            
+            // Update country name
+            document.getElementById('country-name').textContent = countryName;
+            
+            // Update protest count
+            document.getElementById('protest-count').textContent = filteredProtests.length;
+            
+            // Show the panel
+            document.getElementById('country-panel').classList.add('active');
+            
+            // Display protests
+            displayProtests(filteredProtests);
+            
+            // Scroll to panel when clicked 
+            document.getElementById('country-panel').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function displayProtests(protests) {
+            const container = document.getElementById('protests-list');
+            
+            if (protests.length === 0) {
+                container.innerHTML = '<p style="color: #999; font-style: italic;">No protests found for this country.</p>';
+                return;
+            }
+            
+            // A seperate HTML for each protest. I was able to write logit for displaying information about one protest. 
+            // After creating divs for each class I wanted to show, I asked LLMs how to create a loop per protest.
+            // I alsp used LLMs for creating the last class of motivation tags. 
+            let html = '';
+            
+            protests.forEach(protest => {
+                html += `
+                    <div class="protest-card">
+                        <h4>${protest['Protest Name'] || 'Unnamed Protest'}</h4>
+                        
+                        <div class="motivation-tags"> 
+                            ${protest['Economic motivation?'] === 'X' ? '<span class="tag">Economic</span>' : ''}
+                            ${protest['Political motivation?'] === 'X' ? '<span class="tag">Political</span>' : ''}
+                            ${protest['Corruption motivation?'] === 'X' ? '<span class="tag">Corruption</span>' : ''}
+                            ${protest['Gender motivation?'] === 'X' ? '<span class="tag">Gender</span>' : ''}
+                            ${protest['Large protests (Over 100,000 protesting)'] === 'X' ? '<span class="tag large">Large Protest</span>' : ''}
+                            ${protest['Violent government response'] === 'X' ? '<span class="tag violent">Violent Response</span>' : ''}
+                            ${protest['Large protests (Over 100,000 protesting)'] === 'X' ? '<span class="tag large">Large Protests</span>' : ''}
+                        </div>
+
+                        <div class="protest-detail">
+                            <strong>Month:</strong> ${protest['Month'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Year:</strong> ${protest['Year_4digit'] || 'N/A'}
+                        </div>
+
+                        <div class="protest-detail">
+                            <strong>Freedom Rating:</strong> ${protest['Freedom Rating (Status)'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Triggers:</strong> ${protest['Triggers'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Motivations:</strong> ${protest['Motivations'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Key Participants:</strong> ${protest['Key Participants'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Duration:</strong> ${protest['Duration'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Outcomes:</strong> ${protest['Outcomes'] || 'N/A'}
+                        </div>
+                        
+                        <div class="protest-detail">
+                            <strong>Size Category:</strong> ${protest['Size category'] || 'N/A'}
+                        </div>
+                          
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+    </script>
+
+    <!-- Sources -->
+    <section class="sources-section">
+        <h2>Sources</h2>
+        <p>
+            <strong>Carnegie Endowment for International Peace.</strong> 
+            <a href="https://carnegieendowment.org/features/global-protest-tracker?lang=en" target="_blank">
+                Global Protest Tracker
+            </a>
+        </p>
+    </section>
+
+</body>
+</html>
