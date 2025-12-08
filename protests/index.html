@@ -13,51 +13,77 @@
     <header>
         <h1>Global Protests Tracker</h1>
         <p class="description">
-            Interactive visualization of global protests (2017-2024) from Carnegie Endowment for International Peace
+            Interactive visualization of global protests (2017-2024) data from Carnegie Endowment for International Peace
         </p>
     </header>
-    <!-- Filter Section -->
+    <!-- About and instructions -->
+    <section class="about-instructions-section">
+        <div class="about-instructions-container">
+            <div class="about-box">
+                <h3>About the Dataset</h3>
+                <p>
+                    The Global Protest Tracker is a worldwide database of major antigovernment protests since 2017. 
+                    It logs where and when protests occur, why they happen, how big they get, and how long they last. 
+                    The dataset also captures triggers, outcomes, and whether governments respond with violence. Its 
+                    definition of "significant" protests considers not just size but political context. Overall, it's 
+                    a concise, up-to-date resource for understanding global patterns in unrest.
+                </p>
+            </div>
+            <div class="instructions-box">
+                <h3>Instructions</h3>
+                <ul>
+                    <li>Click a country on the map or select one from the dropdown.</li>
+                    <li>Zoom in to the map to explore specific countries.</li>
+                    <li>Uncheck "All Years" or "All Motives" to apply filters.</li>
+                    <li>When filtered, the first number shows protests matching your filters; the second shows the country's total protests in the dataset.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
     <section class="filter-section">
         <h2>Filters</h2>
         <div class="filter-container">
             <div class="filter-group">
                 <h3>Filter by Year:</h3>
-                <div class="checkbox-group">
+                <!-- Syntax from https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/checkbox -->
+                <div class="checkbox-group two-column">
                     <div class="checkbox-item">
                         <input type="checkbox" id="year-all" checked>
                         <label for="year-all">All Years</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="year-2017" disabled>
-                        <label for="year-2017">2017</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="year-2018" disabled>
-                        <label for="year-2018">2018</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="year-2019" disabled>
-                        <label for="year-2019">2019</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="year-2020" disabled>
-                        <label for="year-2020">2020</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="year-2021" disabled>
                         <label for="year-2021">2021</label>
                     </div>
                     <div class="checkbox-item">
+                        <input type="checkbox" id="year-2017" disabled>
+                        <label for="year-2017">2017</label>
+                    </div>
+                    <div class="checkbox-item">
                         <input type="checkbox" id="year-2022" disabled>
                         <label for="year-2022">2022</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2018" disabled>
+                        <label for="year-2018">2018</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="year-2023" disabled>
                         <label for="year-2023">2023</label>
                     </div>
                     <div class="checkbox-item">
+                        <input type="checkbox" id="year-2019" disabled>
+                        <label for="year-2019">2019</label>
+                    </div>
+                    <div class="checkbox-item">
                         <input type="checkbox" id="year-2024" disabled>
                         <label for="year-2024">2024</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="year-2020" disabled>
+                        <label for="year-2020">2020</label>
                     </div>
                     <div class="checkbox-item">
                         <input type="checkbox" id="year-2025" disabled>
@@ -92,23 +118,23 @@
                     </div>
                 </div>
             </div>
-            <div class="filter-group" style="flex: 1; max-width: 600px;">
-                <h3>About the Dataset</h3>
-                <p style="color: #555; line-height: 1.6; font-size: 14px; margin-top: 10px;">
-                    The Global Protest Tracker is a worldwide database of major antigovernment protests since 2017. 
-                    It logs where and when protests occur, why they happen, how big they get, and how long they last. 
-                    The dataset also captures triggers, outcomes, and whether governments respond with violence. Its 
-                    definition of “significant” protests considers not just size but political context. Overall, it’s 
-                    a concise, up-to-date resource for understanding global patterns in unrest.
-                </p>
-            </div>
         </div>
     </section>
     <!-- Map -->
     <section class="map-section">
-        <h2>World Map</h2>
+          <!-- Map -->
+    <section class="map-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 style="margin-bottom: 0;">World Map</h2>
+            <div class="country-dropdown-container">
+                <label for="country-dropdown">Select Country:</label>
+                <select id="country-dropdown">
+                    <option value="">-- Choose a country --</option>
+                </select>
+            </div>
+        </div>
         <div id="map-container"></div>
-        
+
         <!-- Map's legend -->
         <div class="legend">
             <h3>Number of Protests</h3>
@@ -126,6 +152,7 @@
         <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
         <h3>Protests:</h3>
         <div id="protests-list"></div>
+
         <!-- Variable descriptions -->
         <div class="variable-info-section">
             <h3>Variable Descriptions</h3>
@@ -176,7 +203,7 @@
         let protestCountByCountry = new Map();
         let colorScale;
         
-        // Map dimensions
+        // dimensions 
         const width = 960;
         const height = 500;
 
@@ -206,7 +233,7 @@
 
         svg.call(zoom);
 
-        // Setup year filter handlers
+        //  filter handlers
         setupYearFilters();
         setupMotivationFilters();
 
@@ -241,6 +268,7 @@
         })
 
         // Year filter setup
+        // Reference: https://www.geeksforgeeks.org/javascript/how-to-create-a-select-all-checkbox-in-javascript/ and LLM queries
         function setupYearFilters() {
             const allYearsCheckbox = document.getElementById('year-all');
             const yearCheckboxes = [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]
@@ -325,6 +353,7 @@
         }
 
         // Get selected years
+        // Reference: https://www.geeksforgeeks.org/html/how-to-get-all-checked-values-of-checkbox-in-javascript/ and LLM quiries 
         function getSelectedYears() {
             const allYearsChecked = document.getElementById('year-all').checked;
             if (allYearsChecked) {
@@ -373,6 +402,7 @@
             let filtered = protests;
             
             // Filter by year
+            // I used LLMs to understand Array.prototype.filter() and Array.prototype.some() to create this function.
             if (selectedYears !== null && selectedYears.length > 0) {
                 filtered = filtered.filter(protest => {
                     const protestYear = protest['Year_4digit']?.toString().replace('.0', '');
@@ -393,6 +423,8 @@
         }
 
         // Update map colors based on current filters
+        // I used LLMs to understand how to update colors dynamically based on filters.
+        // Quiries included "D3.js update choropleth map colors based on filters" and "D3.js dynamic color scale update"
         function updateMapColors() {
             const filteredCountByCountry = new Map();
             
@@ -436,8 +468,7 @@
                 });
         }
 
-        // Legend I used https://observablehq.com/@d3/color-legend and LLMs to learn more about 
-        // creating color scheme for legend. 
+        // Legend I used https://observablehq.com/@d3/color-legend and LLMs to learn more about creating color scheme for legend. 
         function createLegend(maxValue) {
             const legendScale = d3.select('#legend-scale');
             const legendLabels = d3.select('#legend-labels');
@@ -510,6 +541,31 @@
                         .on('mouseout', function() {
                             d3.select('#tooltip').classed('visible', false);
                         })
+
+                        // Populate dropdown with countries
+                        // Reference: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement 
+                        // LLM queries like "JavaScript populate dropdown from array"
+                        const dropdown = document.getElementById('country-dropdown');
+                        const countriesWithData = Array.from(protestCountByCountry.keys()).sort();
+                        
+                        countriesWithData.forEach(country => {
+                            const option = document.createElement('option');
+                            option.value = country;
+                            option.textContent = country;
+                            dropdown.appendChild(option);
+                        });
+                        
+                        // Dropdown selection
+                        dropdown.addEventListener('change', function() {
+                            const selectedCountry = this.value;
+                            if (selectedCountry) {
+                                g.selectAll('.country').classed('selected', false);
+                                g.selectAll('.country')
+                                    .filter(d => d.properties.name === selectedCountry)
+                                    .classed('selected', true);
+                                showCountryPanel(selectedCountry);
+                            }
+                        });
                 })
         }
         function showCountryPanel(countryName) {
@@ -543,7 +599,9 @@
                 return;
             }
             
-            // A seperate HTML for each protest. I was able to write logit for displaying information about one protest. 
+            // A seperate HTML for each protest. 
+            // Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+            // I was able to write logit for displaying information about one protest. 
             // After creating divs for each class I wanted to show, I asked LLMs how to create a loop per protest.
             // I alsp used LLMs for creating the last class of motivation tags. 
             let html = '';
@@ -617,6 +675,16 @@
             </a>
         </p>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Created by Rushikesh Jadhav</p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/rushikesh-jadhav-mpp/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/rushikeshay" target="_blank">GitHub</a>
+            <a href="https://rushikeshay.github.io/" target="_blank">Portfolio</a>
+        </div>
+    </footer>
 
 </body>
 </html>

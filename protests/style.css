@@ -1,3 +1,6 @@
+/* I used LLMS to get a better idea of CSS best practices and color combinations. 
+Color palettes for inspiration: https://www.w3schools.com/colors/colors_palettes.asp */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +10,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to bottom, #084081 0%, #0868ac 30%, #43a2ca 70%, #e0f3db 100%);
-    min-height: 100vh;
     min-height: 100vh;
     padding: 20px;
 }
@@ -30,6 +32,147 @@ h1 {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
+/* About and Instructions section */
+.about-instructions-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.about-instructions-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0f3db;
+}
+
+.about-instructions-container {
+    display: flex;
+    gap: 30px;
+}
+
+.about-box, .instructions-box {
+    flex: 1;
+    background: #e1ebf1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #81b4e7;
+}
+
+.about-box h3, .instructions-box h3 {
+    color: #0868ac;
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.about-box p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.instructions-box ul {
+    color: #555;
+    line-height: 1.8;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+.instructions-box li {
+    margin-bottom: 8px;
+}
+
+/* Filter section styles */
+.filter-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.filter-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #81b4e7;
+}
+
+.filter-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.filter-group {
+    flex: 0 0 auto;
+    min-width: 220px;
+    background: #f8fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #81b4e7;
+}
+
+.filter-group h3 {
+    color: #0868ac;
+    margin-bottom: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-group.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+    accent-color: #0868ac;
+}
+
+.checkbox-item label {
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+}
+
+.checkbox-item input[type="checkbox"]:disabled + label {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.checkbox-item input[type="checkbox"]:checked + label {
+    font-weight: 500;
+    color: #0868ac;
+}
+
 /* Map formatting */
 .map-section {
     background: #ffffff;
@@ -48,28 +191,83 @@ h1 {
     min-height: 500px;
 }
 
-#info-container {
-    min-height: 300px;
+/* Country dropdown */
+.country-dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Country profile box */
-.country-panel {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: none;
-}
-
-.country-panel.active {
-    display: block;
-}
-
-.country-panel h2 {
+.country-dropdown-container label {
+    font-weight: 500;
     color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
+    font-size: 14px;
+}
+
+#country-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+    min-width: 200px;
+}
+
+#country-dropdown:hover {
+    border-color: #2563eb;
+}
+
+#country-dropdown:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Legend styles */
+.legend {
+    background: white;
+    padding: 0px 15px 15px 15px;
+    border-radius: 8px;
+    margin-top: 0px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.legend h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.legend-scale {
+    display: flex;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Tooltip */ 
+.tooltip {
+    position: absolute;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+
+.tooltip.visible {
+    opacity: 1;
 }
 
 /* Map styles */
@@ -95,7 +293,27 @@ h1 {
     fill: #f0f0f0;
 }
 
-/* Country protest panels */
+/* Country profile box */
+.country-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.country-panel.active {
+    display: block;
+}
+
+.country-panel h2 {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Summary section */
 .summary-section {
     background: #f9f9f9;
     padding: 15px;
@@ -103,6 +321,7 @@ h1 {
     margin-bottom: 15px;
 }
 
+/* Country protest panels */
 .protest-card {
     background: #fafafa;
     border-left: 4px solid #2563eb;
@@ -157,120 +376,7 @@ h1 {
     font-weight: bold;
 }
 
-/* Legend styles. I used LLM to get suggestions on how to insert a legend and its formatting*/
-.legend {
-    background: white;
-    padding: 1px 15px 15px 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.legend h3 {
-    margin: 0 0 10px 0;
-    font-size: 16px;
-    color: #333;
-}
-
-.legend-scale {
-    display: flex;
-    height: 20px;
-    margin-bottom: 10px;
-}
-
-.legend-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #666;
-}
-
-/* Tooltip*/ 
-.tooltip {
-    position: absolute;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-radius: 4px;
-    pointer-events: none;
-    font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    z-index: 1000;
-}
-
-.tooltip.visible {
-    opacity: 1;
-}
-
-/* Filter section styles */
-.filter-section {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.filter-section h2 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.filter-container {
-    display: flex;
-    gap: 40px;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-}
-
-.filter-group {
-    flex: 0 0 auto;
-    min-width: 200px;
-}
-
-.filter-group h3 {
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.checkbox-item input[type="checkbox"] {
-    cursor: pointer;
-    width: 16px;
-    height: 16px;
-}
-
-.checkbox-item label {
-    cursor: pointer;
-    color: #333;
-    font-size: 14px;
-}
-
-.checkbox-item input[type="checkbox"]:disabled + label {
-    color: #999;
-    cursor: not-allowed;
-}
-
-.summary-section {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-}
-
+/* Variable info section */
 .variable-info-section {
     background: #f0f8ff;
     padding: 20px;
@@ -328,5 +434,36 @@ h1 {
 }
 
 .sources-section a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.footer p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.contact-links a:hover {
     text-decoration: underline;
 }
