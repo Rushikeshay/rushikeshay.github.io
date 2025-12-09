@@ -1,0 +1,25 @@
+/* Make profile image a perfect circle */
+.profile img {
+    border-radius: 50% !important;
+    width: 300px !important;
+    height: 300px !important;
+    object-fit: cover;
+    border: 4px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Center the profile section nicely */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Adjust spacing */
+.profile .profile_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}

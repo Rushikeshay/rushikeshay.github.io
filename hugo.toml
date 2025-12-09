@@ -1,0 +1,72 @@
+baseURL = "https://rushikeshay.github.io/"
+languageCode = "en-us"
+title = "Rushikesh Jadhav"
+theme = "PaperMod"
+
+[params]
+  description = "Data Visualization for Public Policy Portfolio"
+  
+  # Profile mode for homepage
+  [params.profileMode]
+    enabled = true
+    title = "Rushikesh Jadhav"
+    subtitle = "Data Visualization for Public Policy"
+    imageUrl = "/photo.jpg"
+    imageTitle = "Profile Picture"
+    imageWidth = 300
+    imageHeight = 300
+    
+    [[params.profileMode.buttons]]
+      name = "Projects"
+      url = "/projects"
+    
+    [[params.profileMode.buttons]]
+      name = "About"
+      url = "/about"
+
+  # Social icons configuration
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/rushikeshay"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/rushikesh-jadhav-mpp"
+    
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:jadhav@uchicago.edu"
+
+  # Additional params
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = false
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

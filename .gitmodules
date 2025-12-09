@@ -1,0 +1,9 @@
+[submodule "themes/air"]
+	path = themes/air
+	url = https://github.com/syui/hugo-theme-air.git
+[submodule "themes/paige"]
+	path = themes/paige
+	url = https://github.com/willfaught/paige.git
+[submodule "themes/PaperMod"]
+	path = themes/PaperMod
+	url = https://github.com/adityatelange/hugo-PaperMod.git
