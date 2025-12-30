@@ -6,11 +6,11 @@ theme = "PaperMod"
 [params]
   description = "Data Visualization for Public Policy Portfolio"
   
-  # Profile mode for homepage
+  # Profile mode for homepage. Reference: https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode
   [params.profileMode]
     enabled = true
     title = "Rushikesh Jadhav"
-    subtitle = "Data Visualization for Public Policy"
+    subtitle = "Data Visualization and Research Portfolio"
     imageUrl = "/photo.jpg"
     imageTitle = "Profile Picture"
     imageWidth = 300
@@ -23,8 +23,7 @@ theme = "PaperMod"
     [[params.profileMode.buttons]]
       name = "About"
       url = "/about"
-
-  # Social icons configuration
+      
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/rushikeshay"
@@ -55,18 +54,23 @@ theme = "PaperMod"
 [menu]
   [[menu.main]]
     name = "Home"
-    url = "/"
+    url = "#home"
     weight = 1
 
   [[menu.main]]
-    name = "About"
-    url = "/about/"
+    name = "Projects"
+    url = "#projects"
     weight = 2
 
   [[menu.main]]
-    name = "Projects"
-    url = "/projects/"
+    name = "About"
+    url = "#about"
     weight = 3
+
+  [[menu.main]]
+    name = "Contact"
+    url = "#contact"
+    weight = 4
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

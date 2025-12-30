@@ -1,3 +1,47 @@
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Make container about 3/4 width */
+body > main, 
+body > main > article, 
+body > main > article > div {
+    max-width: 80% !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Section spacing */
+.section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Different max-widths for different sections */
+#home, #contact {
+    max-width: 1000px;
+}
+
+#about {
+    max-width: 1000px;
+}
+
+#about p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+#projects {
+    max-width: 100% !important;
+    padding: 4rem 0 !important;
+}
+
 /* Make profile image a perfect circle */
 .profile img {
     border-radius: 50% !important;
@@ -21,5 +65,226 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+}
+
+/* Social icons styling */
+.social-icons {
+    display: flex;
     gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.social-link {
+    padding: 0.75rem 1.5rem;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--primary);
+    transition: all 0.2s;
+}
+
+.social-link:hover {
+    background: var(--theme);
+    transform: translateY(-2px);
+}
+
+/* Project cards */
+.project-card {
+    background: var(--entry);
+    padding: 2.5rem 3rem !important;
+    margin: 1.5rem auto !important;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100% !important;
+    max-width: 1000px !important;
+    box-sizing: border-box;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+/* Project card layout with image */
+.project-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.project-image {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--code-bg);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.5rem;
+    background: var(--theme);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s;
+    border: 1px solid var(--border);
+}
+
+.project-link:hover {
+    opacity: 0.8;
+}
+
+/* Skill tags */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--code-bg);
+    color: var(--primary);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px solid var(--border);
+}
+
+/* Contact section */
+#contact {
+    text-align: center;
+}
+
+/* About section layout */
+.about-content {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* CV Download Button */
+.cv-download-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: var(--theme);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cv-download-button:hover {
+    background: var(--entry);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-cv-button {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .cv-download-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .profile img {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .project-card {
+        padding: 1.5rem !important;
+    }
+    
+    .project-content {
+        flex-direction: column;
+    }
+    
+    .project-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .skills-tags {
+        gap: 0.4rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .about-content {
+        flex-direction: column-reverse;
+    }
+    
+    .about-image img {
+        width: 200px;
+        height: 200px;
+    }
 }

@@ -1,0 +1,162 @@
+
+{{ define "main" }}
+<div id="home" class="section">
+  <div class="profile">
+    <div class="profile_inner">
+      {{ if .Site.Params.profileMode.imageUrl }}
+      <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="{{ .Site.Params.profileMode.imageTitle }}" />
+      {{ end }}
+      <h1>{{ .Site.Params.profileMode.title }}</h1>
+      <span>{{ .Site.Params.profileMode.subtitle }}</span>
+      <a href="/Rushikesh_Jadhav_Resume.pdf" class="cv-download-button" target="_blank" rel="noopener noreferrer">
+        Download CV
+      </a>      
+    </div>
+  </div>
+</div>
+
+<div id="projects" class="section">
+  <h2>Projects & Research</h2>
+
+  <div class="project-card">
+    <div class="project-content">
+      <div class="project-image">
+        <img src="/images/Protests.png" alt="Global Protest Tracker Screenshot">
+      </div>
+      <div class="project-text">
+        <h3>Global Protest Tracker: Interactive Visualization</h3>
+        <p>An interactive, web-based tool analyzing worldwide protest events from 2017 to 2025, enabling users to explore protest outcomes, motivating factors, and more. Built with D3.js, the tool transforms a simple dataset into an interactive resource for policy researchers and analysts tracking global civil society trends.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">D3.js</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">Data Visualization</span>
+        </div>
+        <a href="/protests/index.html" class="project-link">View Interactive Tool ➜</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-content">
+      <div class="project-image">
+        <img src="/images/aravalli_hills.png" alt="Aravalli Hills image">
+      </div>
+      <div class="project-text">
+        <h3>Aravalli Range Ruiling: Investigative Article</h3>
+        <p>Conducted an independent geospatial analysis applying the Supreme Court of India’s November 20, 2025 prominence and clustering criteria to satellite-derived elevation data. Developed a transparent, replicable methodology to measure how much of the historically understood Aravalli range would qualify for legal protection under the new definition, finding that over 96% would not meet the threshold. The project integrates GIS, statistical analysis, and data visualization to translate a technical legal standard into concrete spatial outcomes.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">D3.js</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">Statistical Modeling</span>
+          <span class="skill-tag">Geospatial Analysis</span>
+        </div>
+        <a href="https://rushikeshay.github.io/Aravalli-Article/" class="project-link">View Article ➜</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="project-card">
+    <div class="project-content">
+      <div class="project-image">
+        <img src="/images/farm.png" alt="Agricultural Insurance Analysis Chart">
+      </div>
+      <div class="project-text">
+        <h3>Agricultural Insurance Analysis: North East India</h3>
+        <p>A policy analysis of the Pradhan Mantri Fasal Bima Yojana (PMFBY) crop insurance scheme, focusing on implementation challenges and outcomes in India's North Eastern states. Using Python and Altair, this report visualizes coverage gaps, uptake rates, and farmer enrollment trends to inform agricultural policy improvements in underserved regions.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Altair</span>
+          <span class="skill-tag">Policy Analysis</span>
+          <span class="skill-tag">Data Visualization</span>
+        </div>
+        <a href="/Examining_PMFBY.pdf" class="project-link">View Report ➜</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-content">
+      <div class="project-image">
+        <img src="/images/Kenya_energy.png" alt="Kenya Energy Policy Analysis">
+      </div>
+      <div class="project-text">
+        <h3>Assessing the Environmental and Economic Impacts of Kenya's Feed-in-Tariff Policy</h3>
+        <p>A rigorous quasi-experimental evaluation of Kenya's 2008 renewable energy policy using Difference-in-Differences and synthetic control methods. This study quantifies the policy's dual impact on carbon emissions reduction and economic development, comparing Kenya's outcomes against Ghana and 15 other Sub-Saharan African nations to assess whether green energy incentives can deliver both environmental and growth benefits.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Causal Inference</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Policy Evaluation</span>
+          <span class="skill-tag">Energy Policy</span>
+        </div>
+        <a href="/Kenya_paper.pdf" class="project-link">View Paper ➜</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-content">
+      <div class="project-image">
+        <img src="/images/INR.png" alt="Agricultural Credit Policy">
+      </div>
+      <div class="project-text">
+        <h3>Improving Access to Institutional Credit for India's Agricultural Sector</h3>
+        <p>This is a policy proposal that provides guidelines on addressing systemic barriers to institutional agricultural credit access in India. This research synthesizes stakeholder analysis, institutional constraints, and credit market dynamics to propose actionable reforms for achieving universal access to institutional credit, with mechanisms for monitoring inclusion, reducing delinquency, and directing credit toward agricultural investments.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Policy Design</span>
+          <span class="skill-tag">Stakeholder Analysis</span>
+          <span class="skill-tag">Financial Inclusion</span>
+          <span class="skill-tag">Agriculture</span>
+        </div>
+        <a href="/Agri_credit.pdf" class="project-link">View Paper ➜</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about" class="section">
+  <h2>About</h2>
+  
+  <div class="about-content">
+    <div class="about-text">
+      <p>
+        I am a Master of Public Policy candidate at the University of Chicago's Harris School of Public Policy. I am interested in using data to better understand policy problems and help decision-makers turn evidence into action.
+      </p>
+
+      <p>
+        My work focuses on environmental and economic policy, with interests in agriculture and development in emerging markets. I enjoy working at the intersection of data, policy design, and real-world implementation.
+      </p>
+
+      <p>
+        I work with tools such as Python, R, Stata, and D3.js to analyze data and build clear, intuitive visualizations. I care deeply about making complex analysis accessible, whether for policymakers, researchers, or the public.
+      </p>
+    </div>
+    
+    <div class="about-image">
+      <img src="/end_photo.jpg" alt="Rushikesh Jadhav">
+    </div>
+  </div>
+</div>
+
+
+<div id="contact" class="section">
+  <h2>Contact</h2>
+
+  <p>Please get in touch if you're interested in collaborating or have any questions!</p>
+  
+  <div class="social-icons">
+    {{ range .Site.Params.socialIcons }}
+    <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="social-link">
+      <span class="social-icon">{{ .name }}</span>
+    </a>
+    {{ end }}
+  </div>
+  
+  <div class="contact-cv-button">
+    <a href="/Rushikesh_Jadhav_Resume.pdf" class="cv-download-button" target="_blank" rel="noopener noreferrer">
+      Download CV
+    </a>
+  </div>
+</div>
+
+{{ end }}
