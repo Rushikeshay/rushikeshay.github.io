@@ -186,6 +186,20 @@ body > main > article > div {
 /* Contact section */
 #contact {
     text-align: center;
+    min-height: 60vh;
+}
+
+/* Publication cards — left accent border instead of image */
+#publications .project-card {
+    border-left: 4px solid var(--primary);
+}
+
+/* Internship/context note on project cards */
+.project-note {
+    font-size: 0.82rem;
+    color: var(--secondary);
+    margin-top: 0.75rem;
+    font-style: italic;
 }
 
 /* About section layout */
