@@ -28,6 +28,14 @@ areas:
     name: Data analysis
     blurb: Large administrative datasets turned into clear, decision-ready evidence and interactive tools.
 
+# Old URL → file in this site. Keeps links from the previous Hugo site
+# (resumes, emails, LinkedIn) working after the switch.
+aliases:
+  Rushikesh_Jadhav_Resume.pdf: files/Rushikesh_Jadhav_Resume.pdf
+  Kenya_paper.pdf: files/Kenya_paper.pdf
+  Examining_PMFBY.pdf: files/Examining_PMFBY.pdf
+  Agri_credit.pdf: files/Agri_credit.pdf
+
 photo: images/end_photo.jpg
 cv: files/Rushikesh_Jadhav_Resume.pdf
 email: jadhav@uchicago.edu

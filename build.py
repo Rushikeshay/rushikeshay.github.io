@@ -139,6 +139,12 @@ def main():
     shutil.copytree(ROOT / "static", OUT)
     (OUT / ".nojekyll").touch()
 
+    # Old URLs (e.g. from printed resumes) keep working: copy files to their old paths.
+    for old_path, current in (site.get("aliases") or {}).items():
+        target = OUT / old_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(OUT / current, target)
+
     (OUT / "index.html").write_text(env.get_template("home.html").render(
         **ctx, work=work, pubs=pubs), encoding="utf-8")
 
