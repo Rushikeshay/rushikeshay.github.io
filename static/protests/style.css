@@ -1,0 +1,469 @@
+/* I used LLMS to get a better idea of CSS best practices and color combinations. 
+Color palettes for inspiration: https://www.w3schools.com/colors/colors_palettes.asp */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #084081 0%, #0868ac 30%, #43a2ca 70%, #e0f3db 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.description {
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* About and Instructions section */
+.about-instructions-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.about-instructions-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0f3db;
+}
+
+.about-instructions-container {
+    display: flex;
+    gap: 30px;
+}
+
+.about-box, .instructions-box {
+    flex: 1;
+    background: #e1ebf1;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #81b4e7;
+}
+
+.about-box h3, .instructions-box h3 {
+    color: #0868ac;
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.about-box p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.instructions-box ul {
+    color: #555;
+    line-height: 1.8;
+    font-size: 14px;
+    padding-left: 20px;
+}
+
+.instructions-box li {
+    margin-bottom: 8px;
+}
+
+/* Filter section styles */
+.filter-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.filter-section h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #81b4e7;
+}
+
+.filter-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.filter-group {
+    flex: 0 0 auto;
+    min-width: 220px;
+    background: #f8fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #81b4e7;
+}
+
+.filter-group h3 {
+    color: #0868ac;
+    margin-bottom: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-group.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    cursor: pointer;
+    width: 17px;
+    height: 17px;
+    accent-color: #0868ac;
+}
+
+.checkbox-item label {
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+}
+
+.checkbox-item input[type="checkbox"]:disabled + label {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.checkbox-item input[type="checkbox"]:checked + label {
+    font-weight: 500;
+    color: #0868ac;
+}
+
+/* Map formatting */
+.map-section {
+    background: #ffffff;
+    padding: 10px 20px 2px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.map-section h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#map-container {
+    min-height: 500px;
+}
+
+/* Country dropdown */
+.country-dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.country-dropdown-container label {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+#country-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+    min-width: 200px;
+}
+
+#country-dropdown:hover {
+    border-color: #2563eb;
+}
+
+#country-dropdown:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* Legend styles */
+.legend {
+    background: white;
+    padding: 0px 15px 15px 15px;
+    border-radius: 8px;
+    margin-top: 0px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.legend h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.legend-scale {
+    display: flex;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.legend-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Tooltip */ 
+.tooltip {
+    position: absolute;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1000;
+}
+
+.tooltip.visible {
+    opacity: 1;
+}
+
+/* Map styles */
+.country {
+    stroke: #000000;
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.country:hover {
+    stroke: #333;
+    stroke-width: 1.5;
+    opacity: 0.8;
+}
+
+.country.selected {
+    stroke: #000;
+    stroke-width: 2;
+}
+
+.country.no-data {
+    fill: #f0f0f0;
+}
+
+/* Country profile box */
+.country-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.country-panel.active {
+    display: block;
+}
+
+.country-panel h2 {
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Summary section */
+.summary-section {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Country protest panels */
+.protest-card {
+    background: #fafafa;
+    border-left: 4px solid #2563eb;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.protest-card h4 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.protest-detail {
+    margin: 8px 0;
+    color: #555;
+    display: flex;
+    gap: 10px;
+}
+
+.protest-detail strong {
+    color: #333;
+    min-width: 150px;
+    flex-shrink: 0;
+}
+
+.motivation-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tag.violent {
+    background: #ffebee;
+    color: #c62828;
+    font-weight: bold;
+}
+
+.tag.large {
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* Variable info section */
+.variable-info-section {
+    background: #f0f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 1px solid #d0e8ff;
+}
+
+.variable-info-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.variable-item {
+    margin: 10px 0;
+}
+
+.variable-item:last-child {
+    border-bottom: none;
+}
+
+.variable-item strong {
+    color: #2563eb;
+    display: inline-block;
+    min-width: 150px;
+}
+
+.variable-item span {
+    color: #555;
+}
+
+/* Sources */
+.sources-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sources-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.sources-section p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.sources-section a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.sources-section a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.footer p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact-links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.contact-links a:hover {
+    text-decoration: underline;
+}

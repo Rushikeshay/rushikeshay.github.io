@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block bodyclass %}home{% endblock %}
+{% block main %}
+
+<section class="atlas wrap" id="atlas">
+  <div class="atlas-intro">
+    <p class="kicker">An atlas of work · {{ work|length }} projects</p>
+    <h1 class="display">{{ site.headline|safe }}</h1>
+    <p class="lede">{{ site.intro }}</p>
+    <div class="lenses" role="group" aria-label="Zoom the map to a region">
+      <button data-lens="world" aria-pressed="true">World</button>
+      <button data-lens="north-america">Chicago</button>
+      <button data-lens="south-asia">India</button>
+      <button data-lens="east-africa">Kenya</button>
+    </div>
+  </div>
+
+  <div class="atlas-stage">
+    <div class="atlas-map" id="map" data-world="{{ base }}data/world-110m.json"></div>
+    <a class="atlas-card" id="card" hidden>
+      <img alt="">
+      <span class="card-meta"><span class="card-num"></span> <span class="card-place"></span></span>
+      <strong class="card-title"></strong>
+      <span class="card-summary"></span>
+      <span class="card-go">Read the story →</span>
+    </a>
+  </div>
+
+  <ol class="atlas-index" aria-label="Project index">
+    {% for p in work %}
+    <li>
+      <a href="{{ base }}work/{{ p.slug }}/" data-slug="{{ p.slug }}" class="{{ 'on-map' if p.coords else 'off-map' }}">
+        <span class="idx-num">{{ p.num }}</span>
+        <span class="idx-title">{{ p.title }}</span>
+        <span class="idx-place">{{ p.place }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="work wrap" id="work">
+  <header class="section-head">
+    <p class="kicker">Field notes</p>
+    <h2>Selected work</h2>
+  </header>
+  <div class="notes">
+    {% for p in work %}
+    <article class="note">
+      <a href="{{ base }}work/{{ p.slug }}/">
+        {% if p.image %}<figure><img src="{{ base }}{{ p.image }}" alt="" loading="lazy"></figure>{% endif %}
+        <div class="note-text">
+          <p class="note-meta"><span>{{ p.num }}</span> {{ p.place }} · {{ p.year }}</p>
+          <h3>{{ p.title }}</h3>
+          <p class="note-dek">{{ p.dek }}</p>
+        </div>
+      </a>
+      <ul class="tags">{% for t in p.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="pubs wrap" id="publications">
+  <header class="section-head">
+    <p class="kicker">In print</p>
+    <h2>Publications</h2>
+  </header>
+  <ol class="pub-list">
+    {% for p in pubs %}
+    <li>
+      <span class="pub-year">{{ p.year }}</span>
+      <a class="pub-main" href="{{ p.url }}">
+        <span class="pub-title">{{ p.title }}</span>
+        <span class="pub-authors">{{ p.authors }}</span>
+      </a>
+      <span class="pub-venue">{{ p.venue }} ↗</span>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="about wrap" id="about">
+  <header class="section-head">
+    <p class="kicker">About</p>
+    <h2>Hello, I'm Rushikesh.</h2>
+  </header>
+  <div class="about-grid">
+    <img src="{{ base }}{{ site.photo }}" alt="Portrait of {{ site.name }}" loading="lazy">
+    <div class="about-text">
+      {% for para in site.about %}<p>{{ para }}</p>{% endfor %}
+      <p class="about-links">
+        <a class="button" href="mailto:{{ site.email }}">Get in touch</a>
+        <a class="button ghost" href="{{ base }}{{ site.cv }}">Download CV</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="pins-data">{{ pins_json|safe }}</script>
+{% endblock %}
+
+{% block scripts %}<script src="{{ base }}js/atlas.js"></script>{% endblock %}

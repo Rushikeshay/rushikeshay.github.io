@@ -1,0 +1,33 @@
+# Site-wide settings. Project content lives in content/work/*.md
+name: Rushikesh Jadhav
+role: Policy Research & Data Analysis
+base: /portfolio-atlas/   # GitHub Pages path; the deploy workflow sets this automatically
+
+headline: "Policy questions,<br>mapped to the <em>places</em> they touch."
+intro: >-
+  I turn large-scale administrative and spatial data into decisions — from
+  Chicago's property tax base to India's oldest mountains and Kenya's energy grid.
+  Pick a pin, or scroll for the full index.
+
+photo: images/end_photo.jpg
+cv: files/Rushikesh_Jadhav_Resume.pdf
+email: jadhav@uchicago.edu
+github: https://github.com/rushikeshay
+linkedin: https://www.linkedin.com/in/rushikesh-jadhav-mpp
+
+about:
+  - >-
+    I am a data analyst and policy researcher with an MPP from the University of
+    Chicago's Harris School of Public Policy. I specialize in turning large-scale
+    administrative data into decisions, with experience working on Centers for
+    Medicare and Medicaid Services data, evaluating food security interventions for
+    the World Bank, and modeling rural credit access for farmers in India.
+  - >-
+    My work spans economic consulting, international development, and public
+    finance, with a focus on causal inference and program evaluation in emerging
+    markets and federal policy contexts.
+  - >-
+    I work across the full analytical stack — SAS, Stata, R, Python, SQL, and D3.js —
+    building everything from federal deliverables and RCT analyses to interactive
+    data visualizations that make complex findings accessible to policymakers and
+    the public.

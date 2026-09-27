@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ p.title }} — {{ site.name }}{% endblock %}
+{% block description %}{{ p.dek }}{% endblock %}
+{% block bodyclass %}story-page{% endblock %}
+{% block main %}
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+<article class="story">
+  <header class="story-head wrap">
+    <p class="kicker"><a href="{{ base }}#atlas">Atlas</a> <span aria-hidden="true">/</span> {{ p.num }} · {{ p.place }} · {{ p.year }}</p>
+    <h1 class="display">{{ p.title }}</h1>
+    <p class="dek">{{ p.dek }}</p>
+  </header>
+
+  {% if p.image %}
+  <figure class="story-hero wrap"><img src="{{ base }}{{ p.image }}" alt=""></figure>
+  {% endif %}
+
+  <div class="story-grid wrap">
+    <aside class="story-rail">
+      <div class="rail-inner">
+        {% if p.coords %}
+        <div class="locator" id="locator" data-world="{{ base }}data/world-110m.json"
+             data-lon="{{ p.coords[0] }}" data-lat="{{ p.coords[1] }}" aria-label="Locator globe: {{ p.place }}"></div>
+        {% endif %}
+        <dl class="facts">
+          <dt>Place</dt><dd>{{ p.place }}</dd>
+          <dt>Year</dt><dd>{{ p.year }}</dd>
+          <dt>Tools &amp; methods</dt><dd>{{ p.tags|join(', ') }}</dd>
+        </dl>
+        {% if p.links %}
+        <div class="rail-links">
+          {% for l in p.links %}<a class="button{{ ' ghost' if not loop.first }}" href="{{ l.url|href }}">{{ l.label }} →</a>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </aside>
+
+    <div class="story-body prose">
+      {{ p.body_html|safe }}
+      {% if p.note %}<p class="note-box">{{ p.note }}</p>{% endif %}
+      {% if p.readme_html %}
+      <section class="from-repo">
+        <p class="kicker">From the repository · <a href="https://github.com/{{ p.readme.repo }}">{{ p.readme.repo }}</a></p>
+        {{ p.readme_html|safe }}
+      </section>
+      {% endif %}
+    </div>
+  </div>
+
+  <nav class="story-next wrap" aria-label="Next project">
+    <a href="{{ base }}work/{{ next.slug }}/">
+      <span class="kicker">Next · {{ next.num }} · {{ next.place }}</span>
+      <span class="next-title">{{ next.title }} →</span>
+    </a>
+  </nav>
+</article>
+{% endblock %}
+
+{% block scripts %}<script src="{{ base }}js/story.js"></script>{% endblock %}
