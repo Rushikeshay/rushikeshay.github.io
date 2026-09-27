@@ -10,7 +10,6 @@ metadata (place, coordinates, links...). If it names a `readme.repo`, that
 repo's README is fetched from GitHub at build time and appended to the page,
 so the README stays the single source of truth.
 """
-import json
 import os
 import re
 import shutil
@@ -130,12 +129,6 @@ def main():
     for i, m in enumerate(work, 1):
         m["num"] = f"{i:02d}"
 
-    pins = [{"slug": m["slug"], "num": m["num"], "title": m["title"],
-             "place": m.get("place", ""), "summary": m.get("dek", ""),
-             "image": base + m["image"] if m.get("image") else "",
-             "coords": m["coords"], "url": f"{base}work/{m['slug']}/"}
-            for m in work if m.get("coords")]
-
     env = Environment(loader=FileSystemLoader(ROOT / "templates"), autoescape=True)
     # Links in front matter may be site-relative ("files/x.pdf"); prefix the base path.
     env.filters["href"] = lambda url: url if re.match(r"^(https?:|mailto:|/|#)", url) else base + url
@@ -147,7 +140,7 @@ def main():
     (OUT / ".nojekyll").touch()
 
     (OUT / "index.html").write_text(env.get_template("home.html").render(
-        **ctx, work=work, pubs=pubs, pins_json=json.dumps(pins)), encoding="utf-8")
+        **ctx, work=work, pubs=pubs), encoding="utf-8")
 
     for i, m in enumerate(work):
         page = OUT / "work" / m["slug"] / "index.html"

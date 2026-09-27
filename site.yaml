@@ -1,13 +1,32 @@
 # Site-wide settings. Project content lives in content/work/*.md
 name: Rushikesh Jadhav
-role: Policy Research & Data Analysis
+role: Policy Research · Data Analysis · Economic Analysis
 base: /portfolio-atlas/   # GitHub Pages path; the deploy workflow sets this automatically
 
-headline: "Policy questions,<br>mapped to the <em>places</em> they touch."
+headline: "Turning data into <em>evidence</em> for public policy."
 intro: >-
-  I turn large-scale administrative and spatial data into decisions — from
-  Chicago's property tax base to India's oldest mountains and Kenya's energy grid.
-  Pick a pin, or scroll for the full index.
+  I'm a policy researcher and data analyst with an MPP from the University of
+  Chicago Harris School. I evaluate programs, model public finance, and build
+  analysis that decision-makers can act on — in the US and in emerging markets.
+
+# "At a glance" panel beside the headline
+glance:
+  - {label: Currently, value: "Applied Data Fellow, Cook County Bureau of Economic Development"}
+  - {label: Education, value: "MPP, University of Chicago Harris School of Public Policy"}
+  - {label: Methods, value: "Causal inference, program evaluation, econometrics, policy design"}
+  - {label: Tools, value: "Python, R, Stata, SAS, SQL, D3.js"}
+
+# Focus-area cards on the home page. Tag projects with `areas: [key, ...]`.
+areas:
+  - key: policy
+    name: Policy research
+    blurb: Program evaluation and policy design in agriculture, energy, and the environment.
+  - key: economics
+    name: Economic analysis
+    blurb: Causal inference and public finance — from tax increment financing to feed-in tariffs.
+  - key: data
+    name: Data analysis
+    blurb: Large administrative datasets turned into clear, decision-ready evidence and interactive tools.
 
 photo: images/end_photo.jpg
 cv: files/Rushikesh_Jadhav_Resume.pdf

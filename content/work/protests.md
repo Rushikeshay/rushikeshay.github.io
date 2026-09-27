@@ -2,6 +2,7 @@
 title: Global Protest Tracker
 kind: app
 order: 3
+areas: [data]
 year: 2025
 place: Worldwide
 # no coords → listed in the atlas index as "off the map"

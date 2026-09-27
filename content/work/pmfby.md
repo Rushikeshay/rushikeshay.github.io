@@ -2,6 +2,7 @@
 title: Crop insurance in India's North East
 kind: research
 order: 5
+areas: [policy, data]
 year: 2024
 place: North East India
 coords: [92.9, 26.2]

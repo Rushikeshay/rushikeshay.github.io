@@ -2,10 +2,11 @@
 title: How do TIFs reshape Chicago's tax base?
 kind: research
 order: 1
+areas: [economics, data]
 year: 2026
 place: Chicago, Illinois
 coords: [-87.63, 41.88]   # [longitude, latitude]
-dek: Mapping where Chicago's Tax Increment Financing districts redirect billions in public revenue — and who pays the difference.
+dek: How Chicago's Tax Increment Financing districts redirect billions in public revenue — and who pays the difference.
 image: images/TIF.png
 tags: [SQL, R, Plotly, Geospatial analysis, Statistical analysis]
 links:

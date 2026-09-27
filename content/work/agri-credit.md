@@ -2,6 +2,7 @@
 title: Universal access to agricultural credit in India
 kind: research
 order: 6
+areas: [policy, economics]
 year: 2024
 place: India
 coords: [76.5, 19.5]

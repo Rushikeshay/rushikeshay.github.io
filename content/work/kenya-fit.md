@@ -2,6 +2,7 @@
 title: Did Kenya's Feed-in-Tariff deliver green growth?
 kind: research
 order: 4
+areas: [economics, policy]
 year: 2025
 place: Kenya
 coords: [37.9, -0.5]

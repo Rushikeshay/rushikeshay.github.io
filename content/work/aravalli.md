@@ -2,6 +2,7 @@
 title: How a court definition can erase 96.5% of India's oldest mountains
 kind: research
 order: 2
+areas: [policy, data]
 year: 2025
 place: Aravalli Range, Rajasthan
 coords: [74.2, 25.8]

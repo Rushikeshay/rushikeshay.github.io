@@ -2,6 +2,7 @@
 title: "Gondan Diaries: a travel journal app"
 kind: app
 order: 7
+areas: [data]
 year: 2026
 place: On the web
 dek: Journal your travels with photos, location tags, and AI-generated reflection prompts.
