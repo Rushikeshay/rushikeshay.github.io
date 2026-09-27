@@ -7,8 +7,8 @@ year: 2026
 place: On the web
 dek: Journal your travels with photos, location tags, and AI-generated reflection prompts.
 image: images/gondan.png
-tags: [Ruby on Rails, JavaScript, HTML/CSS]
+tags: [Ruby on Rails, OpenAI API, Google Maps API, Supabase, Render]
 links:
   - {label: Open the app, url: "https://gondan-diaries.onrender.com/"}
 ---
-App that helps you journal and document your travel experiences with photos, notes, and diary entries. The key features include location tagging, photo integration, and AI generated questions that help you reflect on your journey. It also has a photo feed to showcase your adventures to your friends and family.
+A full-stack Rails app for journaling travels with photos, notes, and diary entries. Entries are location-tagged through the Google Maps API, and an LLM-powered writing assistant built on the OpenAI API asks questions that help you reflect on each trip. A photo feed lets friends and family follow along. Data is stored in Supabase and the app is deployed on Render.

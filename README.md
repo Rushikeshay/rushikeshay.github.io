@@ -32,6 +32,8 @@ Opening paragraph(s) in Markdown. Anything written here appears above the README
 ```
 
 Publications use `kind: publication` with `venue`, `authors` and `url`, and they have no body text.
+Related publications can share a `series: <key>` (defined under `series` in `site.yaml`); give them
+consecutive `order` values and they are listed together under the series name.
 
 Site-wide text (headline, about, links) is in `site.yaml`.
 

@@ -126,6 +126,15 @@ def main():
     items.sort(key=lambda m: (m.get("order", 99), -int(m.get("year", 0))))
     work = [m for m in items if m.get("kind") != "publication"]
     pubs = [m for m in items if m.get("kind") == "publication"]
+    # Consecutive publications in the same series are shown as one group.
+    pub_groups = []
+    for m in pubs:
+        key = m.get("series")
+        if key and pub_groups and pub_groups[-1]["key"] == key:
+            pub_groups[-1]["items"].append(m)
+        else:
+            pub_groups.append({"key": key, **site.get("series", {}).get(key, {}),
+                               "year": m.get("year"), "items": [m]})
     for i, m in enumerate(work, 1):
         m["num"] = f"{i:02d}"
 
@@ -146,7 +155,7 @@ def main():
         shutil.copyfile(OUT / current, target)
 
     (OUT / "index.html").write_text(env.get_template("home.html").render(
-        **ctx, work=work, pubs=pubs), encoding="utf-8")
+        **ctx, work=work, pubs=pubs, pub_groups=pub_groups), encoding="utf-8")
 
     for i, m in enumerate(work):
         page = OUT / "work" / m["slug"] / "index.html"

@@ -11,7 +11,7 @@ intro: >-
 
 # "At a glance" panel beside the headline
 glance:
-  - {label: Currently, value: "Applied Data Fellow, Cook County Bureau of Economic Development"}
+  - {label: Currently, value: "Data and Policy Analyst, Cook County Bureau of Economic Development"}
   - {label: Education, value: "MPP, University of Chicago Harris School of Public Policy"}
   - {label: Methods, value: "Causal inference, program evaluation, econometrics, policy design"}
   - {label: Tools, value: "Python, R, Stata, SAS, SQL, D3.js"}
@@ -28,6 +28,15 @@ areas:
     name: Data analysis
     blurb: Large administrative datasets turned into clear, decision-ready evidence and interactive tools.
 
+# Publication series: pubs with `series: <key>` are listed together under this heading.
+series:
+  dna:
+    name: Democracy Narratives Alliance
+    blurb: >-
+      A three-part research series by Busara and People Powered for the Democracy
+      Narratives Alliance, on how stories about democracy shape whether people
+      engage in it.
+
 # Old URL → file in this site. Keeps links from the previous Hugo site
 # (resumes, emails, LinkedIn) working after the switch.
 aliases:
@@ -38,23 +47,24 @@ aliases:
 
 photo: images/end_photo.jpg
 cv: files/Rushikesh_Jadhav_Resume.pdf
-email: jadhav@uchicago.edu
+email: rushikesh.y.jadhav@gmail.com
 github: https://github.com/rushikeshay
 linkedin: https://www.linkedin.com/in/rushikesh-jadhav-mpp
 
 about:
   - >-
-    I am a data analyst and policy researcher with an MPP from the University of
-    Chicago's Harris School of Public Policy. I specialize in turning large-scale
-    administrative data into decisions, with experience working on Centers for
-    Medicare and Medicaid Services data, evaluating food security interventions for
-    the World Bank, and modeling rural credit access for farmers in India.
+    I am a policy analyst focused on economic analysis and development, working
+    where data, public finance, and international development meet. I hold an MPP from the
+    University of Chicago's Harris School of Public Policy and currently work as a
+    Data and Policy Analyst at the Cook County Bureau of Economic Development.
   - >-
-    My work spans economic consulting, international development, and public
-    finance, with a focus on causal inference and program evaluation in emerging
-    markets and federal policy contexts.
+    My work asks whether public programs deliver what they promise and who bears
+    the costs. I have evaluated a school feeding program across four countries for
+    the World Bank, measured how Tax Increment Financing reshapes Chicago's tax
+    base, designed a behavioral intervention against child labor in Kenya, and
+    modeled credit access for farmers in India. Along the way I have worked with
+    UNDP on data governance, and with federal health data in economic consulting.
   - >-
-    I work across the full analytical stack — SAS, Stata, R, Python, SQL, and D3.js —
-    building everything from federal deliverables and RCT analyses to interactive
-    data visualizations that make complex findings accessible to policymakers and
-    the public.
+    I work across the full analytical stack — Python, R, Stata, SAS, SQL, and
+    D3.js — from causal inference and program evaluation to maps, dashboards, and
+    interactive tools that make evidence usable for policymakers and the public.

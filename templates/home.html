@@ -60,7 +60,27 @@
     <h2>Publications</h2>
   </header>
   <ol class="pub-list">
-    {% for p in pubs %}
+    {% for g in pub_groups %}
+    {% if g.key %}
+    <li class="pub-group">
+      <span class="pub-year">{{ g.year }}</span>
+      <div>
+        <h3 class="pub-series">{{ g.name }}</h3>
+        {% if g.blurb %}<p class="pub-blurb">{{ g.blurb }}</p>{% endif %}
+        <ol class="pub-sublist">
+          {% for p in g["items"] %}
+          <li>
+            <a class="pub-main" href="{{ p.url }}">
+              <span class="pub-title">{{ p.title }}</span>
+              <span class="pub-authors">{{ p.authors }}</span>
+            </a>
+            <span class="pub-venue">{{ p.venue }} ↗</span>
+          </li>
+          {% endfor %}
+        </ol>
+      </div>
+    </li>
+    {% else %}{% set p = g["items"][0] %}
     <li>
       <span class="pub-year">{{ p.year }}</span>
       <a class="pub-main" href="{{ p.url }}">
@@ -69,6 +89,7 @@
       </a>
       <span class="pub-venue">{{ p.venue }} ↗</span>
     </li>
+    {% endif %}
     {% endfor %}
   </ol>
 </section>
