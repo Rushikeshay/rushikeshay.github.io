@@ -94,6 +94,27 @@
   </ol>
 </section>
 
+{% if site.featured %}
+<section class="featured wrap" id="featured">
+  <header class="section-head">
+    <p class="kicker">On air</p>
+    <h2>Featured</h2>
+  </header>
+  <div class="feature-list">
+    {% for f in site.featured %}
+    <article class="feature">
+      <a href="{{ f.url }}">
+        <p class="feature-meta"><span>{{ f.role }}</span> {{ f.show }} · {{ f.date }}</p>
+        <h3>{{ f.title }}</h3>
+        <p class="feature-blurb">{{ f.blurb }}</p>
+        <p class="feature-link">Listen on Spotify ↗</p>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <section class="about wrap" id="about">
   <header class="section-head">
     <p class="kicker">About</p>

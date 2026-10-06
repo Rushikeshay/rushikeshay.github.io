@@ -17,6 +17,7 @@
     <nav aria-label="Main">
       <a href="{{ base }}#work">Work</a>
       <a href="{{ base }}#publications">Publications</a>
+      {% if site.featured %}<a href="{{ base }}#featured">Featured</a>{% endif %}
       <a href="{{ base }}#about">About</a>
       <a class="nav-cv" href="{{ base }}{{ site.cv }}">CV ↓</a>
     </nav>

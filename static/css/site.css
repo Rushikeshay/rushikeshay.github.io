@@ -140,7 +140,7 @@ a { color: inherit; }
 .section-head { border-top: 1px solid var(--ink); padding-top: 1rem; margin-bottom: 2.2rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1.5rem; }
 .section-head .kicker { margin: 0; }
 .section-head h2 { font: 350 clamp(2rem, 4vw, 3rem)/1 var(--serif); letter-spacing: -.02em; margin: 0; }
-.work, .pubs, .about { padding-block: 3rem; }
+.work, .pubs, .featured, .about { padding-block: 3rem; }
 
 /* ---------- Field notes (editorial grid) ---------- */
 .notes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 3rem 2rem; }
@@ -187,6 +187,22 @@ a { color: inherit; }
 .pub-sublist { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--accent); }
 .pub-list .pub-sublist li { grid-template-columns: minmax(0, 1fr) 14rem; padding: .9rem 0; }
 .pub-list .pub-sublist li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+/* ---------- Featured (podcasts, talks) ---------- */
+.feature-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.feature > a {
+  display: grid; align-content: start; gap: .6rem; height: 100%;
+  padding: 1.2rem 1.2rem 1.4rem; text-decoration: none;
+  border: 1px solid var(--rule); border-top: 3px solid var(--ink);
+  transition: background .2s;
+}
+.feature > a:hover { background: var(--paper-2); }
+.feature-meta { font: 500 .72rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0; }
+.feature-meta span { color: var(--accent); margin-right: .4rem; }
+.feature h3 { font: 400 1.5rem/1.15 var(--serif); letter-spacing: -.01em; margin: 0; }
+.feature a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.feature-blurb { margin: 0; color: var(--muted); font-size: .95rem; }
+.feature-link { margin: .4rem 0 0; font: 400 .75rem/1.4 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 3rem; align-items: start; }
@@ -252,6 +268,7 @@ a { color: inherit; }
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); }
   .areas { grid-template-columns: minmax(0, 1fr); }
+  .feature-list { grid-template-columns: minmax(0, 1fr); }
   .note, .note:nth-child(n) { grid-column: span 12; }
   .pub-list li, .pub-list li.pub-group, .pub-list .pub-sublist li { grid-template-columns: 1fr; gap: .4rem; }
   .pub-venue { text-align: left; }

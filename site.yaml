@@ -37,6 +37,26 @@ series:
       Narratives Alliance, on how stories about democracy shape whether people
       engage in it.
 
+# "Featured" section on the home page: podcasts, talks, press.
+featured:
+  - role: Host
+    show: Root of Conflict
+    title: Migration Flows and US Policy Tools, with Katie Tobin
+    date: May 2026
+    blurb: >-
+      A conversation with Katie Tobin, formerly of the National Security Council
+      and UNHCR, on how conflict shapes migration to the US and the policy tools
+      available to respond.
+    url: https://open.spotify.com/episode/6h5iGap0WLQqBvzCmNeNoK
+  - role: Guest
+    show: TAP into the African Experience
+    title: "TAP Live: Internships in Africa"
+    date: January 2026
+    blurb: >-
+      A panel of second-year MPP students at Harris on their summer internships
+      across Africa and what they learned from the experience.
+    url: https://open.spotify.com/episode/5U128c625g3a3Lpfyb8gAb
+
 # Old URL → file in this site. Keeps links from the previous Hugo site
 # (resumes, emails, LinkedIn) working after the switch.
 aliases:
